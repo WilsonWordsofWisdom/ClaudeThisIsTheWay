@@ -35,3 +35,49 @@ PRODUCT_BRIEF → DESIGN → ARCHITECTURE → ENGINEERING → TESTING → SECURI
      │              │           │              │              │            │ NIST      │
      └──────────────┴───────────┴──── docs/decisions.md (updated throughout) ──────────┘
                     PRD journeys → tests ;  PRD north star → analytics  (traceability)
+
+
+## Installation
+
+These files live in your **global** Claude config at `~/.claude/`. The install
+**merges** them in — it replaces your `CLAUDE.md` and adds `sop/` + `docs/`,
+while leaving your existing skills, plugins, settings, and auth untouched.
+
+### Recommended (safe merge)
+
+```bash
+# 1. Back up your current global Claude setup
+cp -R ~/.claude "$HOME/.claude.backup.$(date +%Y%m%d%H%M%S)"
+
+# 2. Clone this repo to a temp folder
+git clone https://github.com/WilsonWordsofWisdom/ClaudeThisIsTheWay.git /tmp/claude-tiw
+
+# 3. Merge the standards into ~/.claude (creates it if missing)
+mkdir -p ~/.claude
+cp -R /tmp/claude-tiw/.claude/. ~/.claude/
+
+# 4. Clean up
+rm -rf /tmp/claude-tiw
+```
+
+Your global `CLAUDE.md` is now replaced with this one, and `~/.claude/sop/`
+and `~/.claude/docs/` are added. Restore anytime from the backup folder.
+
+### Brand-new users (no existing ~/.claude)
+
+```bash
+git clone https://github.com/WilsonWordsofWisdom/ClaudeThisIsTheWay.git /tmp/claude-tiw
+mkdir -p ~/.claude && cp -R /tmp/claude-tiw/.claude/. ~/.claude/ && rm -rf /tmp/claude-tiw
+```
+
+### Per-project docs scaffold
+
+When starting a new project, copy the living-doc templates into it:
+
+```bash
+cp -R ~/.claude/docs <your-project>/docs
+```
+
+> ⚠️ **Do not** `rm -rf ~/.claude` to "replace" your setup — that deletes your
+> installed skills, plugins, MCP servers, settings, and sign-in. The merge
+> above is all you need.
