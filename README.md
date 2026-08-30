@@ -12,6 +12,7 @@ Setup for Claude Code for a great and standardized vibe coding experience
 | 5 | Verify | TESTING.md | Test strategy, TDD, what "verified" means | Writing/running tests before claiming done |
 | 6 | Harden | SECURITY_ASSESSMENT.md | Threat modeling, secrets, authn/z, injection, deps | Before merge — esp. auth/payments/user input |
 | 7 | Measure | ANALYTICS.md | Instrumentation, events, metrics, post-launch review | When adding tracking / after launch |
+| 8 | Always (cross-cutting) | AGENT_SECURITY.md | Agent-workflow security: no secrets in prompts/git, untrusted content = data, rules-file integrity, dep verification, human gate | On any task touching prompts, files, deps, or git |
 
 ## This Is The Way Forward
 When you start the next project, CLAUDE.md §5 fires stage by stage and I scaffold this docs/ tree:

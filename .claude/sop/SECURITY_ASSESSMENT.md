@@ -73,3 +73,5 @@ Every security fix must **not break the working product** and must be **rollback
 ## Defers to
 
 Use `cso` / `security-review` for deep assessment; this SOP defines the baseline checklist, the cadence, and the fix-safety rules.
+
+**Scope split:** this SOP secures the *product* (application security). The *agent workflow itself* — no secrets in prompts, prompt-injection resistance, steering-file integrity, dependency verification, and the human approval gate — is governed by `AGENT_SECURITY.md`, which is always on.
