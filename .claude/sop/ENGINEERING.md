@@ -23,6 +23,25 @@
 - [ ] **No silent failures** — handle or surface errors; never swallow them.
 - [ ] **No orphaned dead code** — remove imports/vars/functions *your* change made unused; leave pre-existing dead code unless asked.
 
+## Troubleshooting log — `docs/troubleshooting.md`
+
+Debugging the same problem twice is pure waste, and across sessions it is invisible waste — nobody
+notices the second investigation was avoidable. The log exists to make that cost visible and cheap.
+
+- **Read first.** Before investigating any error, grep the log for the symptom. The lookup has to be
+  cheaper than the investigation for this to pay, so entries lead with the **literal error string**.
+- **Write when it cost something.** Append after any fix that took more than one attempt. Solved
+  first try means it wasn't expensive and won't be next time either.
+- **Write it in the same edit as the fix.** A separate step doesn't happen.
+- **Record dead ends.** "Tried X, failed because Y" is what stops the re-tread — it is the highest-value
+  entry and the one always lost.
+- **Only what recurs.** Environment quirks, tooling, non-obvious causes. Not fixed code bugs: those
+  can't happen again and git already holds the reasoning.
+- **Prune.** When the cause is permanently gone, delete the entry. Git remembers.
+
+This covers repeat investigation *across* sessions. It does nothing for a single session that thrashes
+on one problem — there, stop and re-read the error rather than trying another variation.
+
 ## Commit & PR standard
 
 - **Commit messages:** imperative, scoped, and specific — *what* changed and *why*. Small, coherent commits over one giant blob.

@@ -10,6 +10,16 @@
 3. **One-way data flow.** Predictable direction beats clever bidirectional coupling.
 4. **Avoid one-way doors.** Prefer reversible decisions; flag the irreversible ones explicitly.
 
+## Trigger — check state, not stage
+
+`docs/architecture.md` is required by *existence*. Check for it rather than trying to recognise the moment — the moment is missed on every project that adopted these standards after it started, which is most of them.
+
+| State | What to do |
+|-------|-----------|
+| Missing, project is new | The gate below applies — propose and diagram *before* building. |
+| Missing, code already exists | Offer to reconstruct it from the codebase (see below), marked `Status: Reconstructed`. |
+| Present | Read it. If the code has moved past it, offer to refresh it and show what changed. |
+
 ## Gate — propose and diagram before building
 
 **Before building, present the best architecture approach(es) to the human operator with trade-offs and a recommendation, and show a diagram of the proposed end-state solution.** Get alignment before writing code.
@@ -19,6 +29,22 @@
 ## The architecture doc lives at `docs/architecture.md`
 
 Keep a current architecture diagram in `docs/architecture.md`. Use **Mermaid** (text-based, versionable, easy to regenerate). **Update the diagram as the product is refined and enhanced** so it never goes stale.
+
+## Reconstructing a diagram from existing code
+
+When the diagram was never produced, derive it from what's there. Read the code before drawing: entry points, module boundaries and their dependencies, data stores, external services called, and whatever deployment surface appears in config.
+
+Draw it in layers, going only as deep as the project warrants:
+
+1. **Context** — the system and the external things it talks to.
+2. **Container** — the services, processes, and data stores inside it.
+3. **Component** — modules within the main application, and who depends on whom.
+
+For an architecture review, also mark **trust boundaries** and the **data flows** that cross them.
+
+**Name what a repository cannot show.** Cloud topology, network boundaries, IAM and roles, scaling and failover configuration, and anything set in a console leave no trace in the code. List these as *not visible from the repository* rather than omitting them — silent omission reads as absence of risk. The same applies to any module whose behaviour you inferred rather than confirmed: say which is which.
+
+A reconstructed diagram records what the system **is**, not what anyone decided — which is precisely what makes it useful for an audit, since the gap between it and an older intended diagram is itself a finding. Ask the operator to correct it; once they have, change its status to `Authored` and log any decisions their corrections reveal in `docs/decisions.md`.
 
 ## Checklist — before implementation
 
