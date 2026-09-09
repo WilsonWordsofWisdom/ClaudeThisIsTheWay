@@ -82,8 +82,11 @@ Domain standards live in `~/.claude/sop/`. **Consult the relevant SOP on demand 
 - `docs/design.md` — current design: layouts, key screens, visual language.
 - `docs/architecture.md` — current Mermaid architecture diagram.
 - `docs/tests/` — Gherkin `.feature` files, one per PRD journey.
+- `docs/troubleshooting.md` — symptom → cause → fix for problems that recur, including dead ends.
 
 **Traceability:** PRD journeys → `docs/tests/` → E2E coverage; PRD north star → analytics.
+
+**Don't re-solve solved problems.** Before investigating an error, grep `docs/troubleshooting.md` for the symptom — a grep costs nothing, re-debugging costs a lot. After fixing anything that took more than one attempt, append an entry in the same session, including what *didn't* work. Log only what can recur; a fixed code bug lives in git history, not there.
 
 **Check state, not stage.** A living doc is required by *existence*, not by catching the right moment. Never assume an earlier session created one — check, because most projects adopt these standards after they have already started:
 
