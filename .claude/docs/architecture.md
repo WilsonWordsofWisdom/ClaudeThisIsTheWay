@@ -2,6 +2,8 @@
 
 > Living document. Keep the diagram current as the product evolves.
 > Standard: `~/.claude/sop/ARCHITECTURE.md`
+> **Status:** Authored | Reconstructed | Draft — *(Reconstructed = inferred from existing code, not author-verified)*
+> **Last updated:** YYYY-MM-DD
 
 ## Overview
 <one-paragraph description of the system>

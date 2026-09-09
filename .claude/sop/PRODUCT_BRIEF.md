@@ -10,6 +10,23 @@
 3. **The brief is a living document, not a one-time gate.** It evolves as we learn.
 4. **Smallest valuable slice wins.** Ship the thinnest thing that delivers real value, then iterate.
 
+## Trigger — check state, not stage
+
+`docs/PRD.md` is required by *existence*. Check for it rather than trying to recognise the moment:
+
+| State | What to do |
+|-------|-----------|
+| Missing, project is new | Principle 1 applies — no code without a brief. Run the discovery dialogue. |
+| Missing, code already exists | Offer to reconstruct it from the codebase, marked `Status: Reconstructed`. |
+| Present | Read it; it is the input every later stage depends on. |
+
+**A reconstructed PRD is weaker than an authored one, and must say so.** Read from code, you can describe what the system does and infer its journeys. You cannot recover what was decided, what was rejected, or why. Two sections are especially unreliable and should be marked as such until the operator confirms them:
+
+- **Non-goals** — from code these collapse into "things it happens not to do", which is not the same as a deliberate exclusion and constrains nothing.
+- **Success metrics & north star** — chosen after the fact, these drift toward whatever the existing instrumentation can already measure rather than what matters.
+
+Ask the operator to fill both. Once they have, change the status to `Authored` and log what they tell you in `docs/decisions.md` — that conversation is often the only surviving record of the original reasoning.
+
 ## The PRD lives at `docs/PRD.md`
 
 Every project maintains a Product Requirements Doc at `docs/PRD.md`. Create it up front, then **keep updating it through the whole lifecycle** as requirements, scope, and enhancements evolve. It is the single source of truth that downstream stages depend on.

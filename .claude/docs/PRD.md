@@ -2,6 +2,8 @@
 
 > Living document. Created at discovery; updated across the whole lifecycle.
 > Standard: `~/.claude/sop/PRODUCT_BRIEF.md`
+> **Status:** Authored | Reconstructed | Draft — *(Reconstructed = inferred from existing code, not author-verified)*
+> **Last updated:** YYYY-MM-DD
 
 ## Problem
 <the real problem, in one or two sentences>
