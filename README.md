@@ -17,14 +17,44 @@ down what it decided.
   secrets into the code. This is the part that makes it safe to hand to someone who
   can't read the diff.
 
-## Before you start
+## How it works
+
+*The way, stage by stage.*
+
+```mermaid
+flowchart LR
+    A["<b>Discovery</b><br/>docs/PRD.md"] --> B["<b>Design</b><br/>docs/design.md"]
+    B --> C["<b>Architecture</b><br/>docs/architecture.md"]
+    C --> D["<b>Build</b><br/>the code"]
+    D --> E["<b>Verify</b><br/>docs/tests/"]
+    E --> F["<b>Harden</b><br/>security review"]
+    F --> G["<b>Measure</b><br/>analytics"]
+    G -. "what you learn feeds the next round" .-> A
+    A -.-> H[("docs/decisions.md")]
+    C -.-> H
+```
+
+Claude reads `CLAUDE.md` at the start of every session. That file is a router: when it
+reaches a stage, it opens the matching standard from `sop/` and follows it. Nothing else
+is loaded until it's needed.
+
+Two things run underneath every stage: the security rules, which never switch off, and a
+troubleshooting log, so a problem solved once doesn't get re-debugged next month.
+
+## Installing it
 
 You need Claude Code already installed. Takes about two minutes, and you only do it once.
 
-Everything lives in your **global** Claude folder at `~/.claude/`, so it applies to every
+Everything goes into your **global** Claude folder at `~/.claude/`, so it applies to every
 project on your machine automatically.
 
-## Install
+**What it changes:** it adds new files, and replaces exactly one — your existing
+`CLAUDE.md`. Both routes below back that up first. Your logins, plugins, settings, and any
+skills you already had are untouched.
+
+Pick either route. They do the same thing.
+
+### Option 1 — install it yourself
 
 Run these four commands in your terminal, in order.
 
@@ -43,12 +73,37 @@ mkdir -p ~/.claude && cp -R /tmp/claude-tiw/.claude/. ~/.claude/
 rm -rf /tmp/claude-tiw
 ```
 
-**What this changes:** it adds new files, and replaces exactly one — your existing
-`CLAUDE.md`. Step 1 backed that up first. Your logins, plugins, settings, and any skills
-you already had are untouched.
-
 > ⚠️ **Never** run `rm -rf ~/.claude` to "start clean" — that deletes your skills,
 > plugins, settings, and sign-in. The commands above are all you need.
+
+### Option 2 — have Claude do it
+
+If you'd rather not touch the terminal, open Claude Code and paste this in:
+
+```text
+Install the ClaudeThisIsTheWay standards into my global Claude config at ~/.claude/.
+
+Work in this order, and stop and tell me if any step fails:
+
+1. Back up my current setup: copy ~/.claude to ~/.claude.backup.<today's date and time>.
+   If ~/.claude doesn't exist yet, tell me and skip this step.
+2. Clone https://github.com/WilsonWordsofWisdom/ClaudeThisIsTheWay.git into a temporary
+   folder.
+3. Show me which files in ~/.claude will be ADDED and which will be OVERWRITTEN, then
+   wait for me to confirm. Don't copy anything before I say yes.
+4. Once I confirm, copy the contents of the repo's .claude/ folder into ~/.claude/ —
+   merging into it, not replacing the folder.
+5. Delete the temporary clone.
+6. Tell me where the backup is, and remind me to start a new Claude Code session.
+
+Never delete ~/.claude.
+```
+
+Claude will ask permission before writing files — that's expected. It will also show you
+exactly what it's about to overwrite and wait for your go-ahead.
+
+**Either way, start a new Claude Code session afterwards.** The instructions are read when
+a session starts, so a session already open won't pick them up.
 
 ## How to undo it
 
@@ -75,30 +130,6 @@ It works on those too — you don't need to start something new. When Claude ope
 project that's missing its documents, it offers once to reconstruct them from the code
 you already have, and marks them **Reconstructed** so nobody mistakes a description of
 the existing system for a record of what was originally decided.
-
-## How it works
-
-*The way, stage by stage.*
-
-```mermaid
-flowchart LR
-    A["<b>Discovery</b><br/>docs/PRD.md"] --> B["<b>Design</b><br/>docs/design.md"]
-    B --> C["<b>Architecture</b><br/>docs/architecture.md"]
-    C --> D["<b>Build</b><br/>the code"]
-    D --> E["<b>Verify</b><br/>docs/tests/"]
-    E --> F["<b>Harden</b><br/>security review"]
-    F --> G["<b>Measure</b><br/>analytics"]
-    G -. "what you learn feeds the next round" .-> A
-    A -.-> H[("docs/decisions.md")]
-    C -.-> H
-```
-
-Claude reads `CLAUDE.md` at the start of every session. That file is a router: when it
-reaches a stage, it opens the matching standard from `sop/` and follows it. Nothing else
-is loaded until it's needed.
-
-Two things run underneath every stage: the security rules, which never switch off, and a
-troubleshooting log, so a problem solved once doesn't get re-debugged next month.
 
 <details>
 <summary><b>The eight standards, in detail</b></summary>
