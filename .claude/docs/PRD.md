@@ -32,6 +32,13 @@
 ## Constraints
 <time, budget, compliance, and other hard limits>
 
+## Data classification & regulatory regime
+> Drives the security stage (see `sop/SECURITY_ASSESSMENT.md`). Leave as `none` unless this is
+> government or otherwise regulated work.
+
+- Classification: <none | Official-Open | Restricted | Confidential | Sensitive-Normal | Sensitive-High>
+- Regime: <none | IM8 (SG Government) | other>
+
 ## Technical requirements
 - Preferred stack / cloud / hosting:
 - Technologies to bootstrap on or build with:

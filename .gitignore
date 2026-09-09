@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IM8 skill: per-machine catalog freshness stamp (not shared state)
+.claude/skills/im8-compliance-audit/references/last-checked.json
+
+# python bytecode
+__pycache__/
+*.pyc

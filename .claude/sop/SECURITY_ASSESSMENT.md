@@ -59,6 +59,33 @@ Pick tools matching the project's language, framework, and cloud.
   - An **implementation plan** to fix them.
 - **Also trigger immediately** for any change touching auth, payments, or user input.
 
+## Regulated work — IM8 (conditional)
+
+**Only when `docs/PRD.md` declares a government data classification.** Projects with no
+classification — personal work included — skip this section entirely; nothing here changes
+their flow.
+
+- **Additional, not instead of.** The baseline checklist above still applies. IM8 is a control
+  list, not an application-security review; it does not phrase most app-layer bugs as findings.
+- **Invoke the `im8-compliance-audit` skill.** It takes the PRD's classification, derives the risk
+  band, and reports gaps. **If the skill is unavailable, say so and stop — never improvise IM8
+  controls from memory.** Invented control IDs are worse than no audit, and the reader cannot
+  tell the difference.
+- **Run it early, then before each release.** L0 gaps are hard blockers with no deviation
+  permitted, so a first pass at architecture sign-off makes them a design constraint rather than
+  late rework. Per-PR is the wrong cadence — the audit needs human input (classification,
+  containerised, public-facing, offshore) and cannot be a CI gate.
+- **It is not certification.** The audit finds repo-visible gaps. It does not replace the SSP
+  process or IDSC/CISO sign-off, and a large share of controls are *not assessable from a repo* by
+  design. Say this whenever reporting results — "3 gaps found" reads as a clean bill of health on
+  everything else, especially to a non-technical reader.
+- **The report is sensitive.** It is a ranked list of weaknesses in a government system. It follows
+  the repository's visibility: never write it into a public repo, and when in doubt keep it out of
+  version control.
+- **Check the catalog's freshness.** The skill reports when the control catalog was last verified.
+  Carry that date into whatever you hand over — a stale catalog can misreport a control's level,
+  and a missed L1 → L0 promotion tells the agency it may deviate where it may not.
+
 ## Data compliance & privacy
 
 - **Flag PII / sensitive data wherever it appears** — names, emails, phone numbers, government IDs, financial, health, biometric, precise location, credentials.

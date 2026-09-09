@@ -42,6 +42,7 @@ Every project maintains a Product Requirements Doc at `docs/PRD.md`. Create it u
 - [ ] **In scope** — what this delivers.
 - [ ] **Non-goals** — what it explicitly does not do (this release).
 - [ ] **Constraints** — time, budget, compliance, and other hard limits.
+- [ ] **Data classification & regulatory regime** — the most sensitive data the system will hold, and any regime that follows from it. This is a business decision only the operator can make, and later stages depend on it (see `SECURITY_ASSESSMENT.md`). Default to *none* for personal projects.
 - [ ] **Technical requirements** — preferred stack, cloud/hosting environment, and any technologies to bootstrap on or build with; note if greenfield/open.
 - [ ] **Assumptions & risks** — what we're betting on, and what could go wrong.
 - [ ] **Smallest valuable slice** — the first shippable increment.
@@ -63,6 +64,7 @@ Every project maintains a Product Requirements Doc at `docs/PRD.md`. Create it u
 ## In scope
 ## Non-goals
 ## Constraints
+## Data classification & regulatory regime
 ## Technical requirements
 - Preferred stack / cloud / hosting:
 - Technologies to bootstrap on or build with:
