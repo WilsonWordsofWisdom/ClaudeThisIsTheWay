@@ -13,6 +13,9 @@ matters as much as the first two; reporting a control as "failed" when it just l
 outside the repo (in the cloud console, in a contract, in a governance document)
 produces false alarms and erodes trust in the audit.
 
+## Source
+https://github.com/GovTechSG/tech-standards/blob/master/catalogs/im8-reform.json 
+
 ## The audit flow
 
 Work through these steps in order. Don't skip the classification step — the entire
