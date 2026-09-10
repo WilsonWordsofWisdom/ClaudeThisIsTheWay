@@ -2,6 +2,8 @@
 
 > Living document. Reflects the **current** design; update whenever it changes.
 > Standard: `~/.claude/sop/DESIGN_GUIDE.md` — default to Google Material Design unless overridden.
+> **Status:** Authored | Reconstructed | Draft — *(Reconstructed = inferred from existing code, not author-verified)*
+> **Last updated:** YYYY-MM-DD
 
 ## Design system
 - Base: Google Material Design (m3.material.io) — or `<project's own system>`

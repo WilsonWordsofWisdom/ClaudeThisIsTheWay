@@ -2,6 +2,8 @@
 
 > Living document. Created at discovery; updated across the whole lifecycle.
 > Standard: `~/.claude/sop/PRODUCT_BRIEF.md`
+> **Status:** Authored | Reconstructed | Draft — *(Reconstructed = inferred from existing code, not author-verified)*
+> **Last updated:** YYYY-MM-DD
 
 ## Problem
 <the real problem, in one or two sentences>
@@ -29,6 +31,13 @@
 
 ## Constraints
 <time, budget, compliance, and other hard limits>
+
+## Data classification & regulatory regime
+> Drives the security stage (see `sop/SECURITY_ASSESSMENT.md`). Leave as `none` unless this is
+> government or otherwise regulated work.
+
+- Classification: <none | Official-Open | Restricted | Confidential | Sensitive-Normal | Sensitive-High>
+- Regime: <none | IM8 (SG Government) | other>
 
 ## Technical requirements
 - Preferred stack / cloud / hosting:
