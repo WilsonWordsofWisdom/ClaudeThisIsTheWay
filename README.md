@@ -30,7 +30,7 @@ flowchart LR
     E --> F["<b>Harden</b><br/>security review"]
     F --> G["<b>Measure</b><br/>analytics"]
     G -. "what you learn feeds the next round" .-> A
-    A -.-> H[("docs/decisions.md")] 
+    A -.-> H@{shape: doc, label: "docs/decisions.md"}
     C -.-> H
 ```
 
