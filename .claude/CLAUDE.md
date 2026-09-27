@@ -14,6 +14,9 @@ Before implementing:
 - If a simpler approach exists, say so. Push back when warranted.
 - If something is unclear, stop. Name what's confusing. Ask.
 
+**Default format for substantive questions.** When a clarifying question has real, enumerable options with different tradeoffs — a Discovery/Design/Architecture-type decision — default to structured multiple-choice: concrete options, one marked recommended, a tradeoff for each, plus room for a free-text answer if none fit. A quick yes/no or a trivial naming question stays a plain question — don't turn trivial questions into ceremony.
+
+
 ## 2. Simplicity First
 
 **Minimum code that solves the problem. Nothing speculative.**

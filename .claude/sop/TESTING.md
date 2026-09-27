@@ -40,6 +40,26 @@ Feature: <capability from a PRD journey>
     Then <expected outcome>
 ```
 
+## Closing a testing pass
+
+Every testing pass — not just the final PR — ends with:
+
+- **A results table.** One row per check/scenario: what was tested, how (automated test name, or manual steps), and pass/fail.
+- **A "Recommended fix" column**, populated only for failing/flagged rows.
+- **A sequencing call, if anything failed:**
+  - *Fix now, before the next feature* — the fix is inside the scope of the already-approved plan (the same decision already made, just incompletely applied), or small enough that holding it up costs more ceremony than the fix.
+  - *Branch it off, fix and merge back separately* — the fix is a new/separate concern outside the approved plan's scope, or large enough that bundling it would blur what the current change did.
+- **An explicit edge-case ask.** Not "let me know if you spot anything" — ask directly what edge cases might be missing. The agent doesn't know what it doesn't know; a confident "tests pass" summary can hide gaps (boundary values, concurrent access, direct URL access bypassing UI-level gating) that only a human or second reviewer reliably catches.
+
+## Verify is not Build-stage testing
+
+Build-stage testing checks "does this piece I just wrote work" — self-directed, same context that wrote the code, inherently weaker. The Verify-stage pass checks "does behaviour match the documented requirement" — a distinct, more independent check. 
+
+Verify's report must be **scenario-driven**: one row per scenario in `docs/tests/*.feature` (or the project's equivalent acceptance-criteria doc), each with pass/fail plus evidence (an automated test name, or the manual steps taken and what was observed) — not a free-form list of whatever happened to get tested.
+
+- **Restart to a clean/fresh state** before running the Verify pass — don't continue from whatever state Build-stage testing left behind.
+- **End with a "what remains unverified" list**, scoped to what the feature/acceptance-criteria file doesn't cover. This distinguishes "not tested" from "not written into the spec at all" — itself a useful signal.
+
 ## Verification checklist
 
 - [ ] **Reproduce bugs with a test first**, then fix.
