@@ -40,6 +40,17 @@ Feature: <capability from a PRD journey>
     Then <expected outcome>
 ```
 
+## Closing a testing pass
+
+Every testing pass — not just the final PR — ends with:
+
+- **A results table.** One row per check/scenario: what was tested, how (automated test name, or manual steps), and pass/fail.
+- **A "Recommended fix" column**, populated only for failing/flagged rows.
+- **A sequencing call, if anything failed:**
+  - *Fix now, before the next feature* — the fix is inside the scope of the already-approved plan (the same decision already made, just incompletely applied), or small enough that holding it up costs more ceremony than the fix.
+  - *Branch it off, fix and merge back separately* — the fix is a new/separate concern outside the approved plan's scope, or large enough that bundling it would blur what the current change did.
+- **An explicit edge-case ask.** Not "let me know if you spot anything" — ask directly what edge cases might be missing. The agent doesn't know what it doesn't know; a confident "tests pass" summary can hide gaps (boundary values, concurrent access, direct URL access bypassing UI-level gating) that only a human or second reviewer reliably catches.
+
 ## Verification checklist
 
 - [ ] **Reproduce bugs with a test first**, then fix.
