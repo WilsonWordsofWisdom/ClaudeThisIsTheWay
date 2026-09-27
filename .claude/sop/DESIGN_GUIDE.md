@@ -15,6 +15,11 @@
 
 **Before building UI, ask the human operator whether they'd like to see a mockup or wireframe first.** Don't jump to production code on a visual change without offering this.
 
+**Default to in-session mockups.** For Design-stage decisions with real UI/UX tradeoffs, render 2–3 visual mockup options directly in-session — using whatever inline rendering capability is available, no external tool or account required — with one clearly marked recommended, and an explicit invitation to describe a different interaction if none fit. This is for UI/interaction decisions specifically; non-visual decisions (data shape, access rules, etc.) use the multiple-choice format from `CLAUDE.md` §1 instead.
+
+**In-session mockups and external tools (e.g. Figma Make) are complementary, not a replacement for one another.** Use in-session mockups for fast internal iteration — no context-switch, no setup. Reserve an external tool for when actual customer-facing feedback is needed.
+
+
 ## The design doc lives at `docs/design.md`
 
 Record final designs (layouts, key screens, component decisions, visual language) in `docs/design.md`. **Update it whenever the design changes or is refined** during the lifecycle, so it always reflects the current product.

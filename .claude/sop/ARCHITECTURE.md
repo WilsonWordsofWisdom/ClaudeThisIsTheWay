@@ -30,6 +30,9 @@
 
 Keep a current architecture diagram in `docs/architecture.md`. Use **Mermaid** (text-based, versionable, easy to regenerate). **Update the diagram as the product is refined and enhanced** so it never goes stale.
 
+**Preserve before/after, don't overwrite in place.** When an approved architecture decision changes the diagram, keep the prior version visible: a "Before (baseline)" section and an "After (to-be)" section, each with its own Mermaid diagram (Mermaid-in-markdown can't render two diagrams side by side, so this is sequential). In the "After" diagram, use `classDef`/`class` to color new components distinctly (e.g. `fill:#d5e8d4,stroke:#82b366` — green) from modified components (e.g. `fill:#fff2cc,stroke:#d6b656` — amber) and unchanged ones, with a one-line legend. For cases where a true side-by-side view matters (e.g. presenting to a client), maintain a companion `.drawio` file with a two-column layout, row-per-layer, the same highlight colors, and a legend.
+
+
 ## Reconstructing a diagram from existing code
 
 When the diagram was never produced, derive it from what's there. Read the code before drawing: entry points, module boundaries and their dependencies, data stores, external services called, and whatever deployment surface appears in config.
