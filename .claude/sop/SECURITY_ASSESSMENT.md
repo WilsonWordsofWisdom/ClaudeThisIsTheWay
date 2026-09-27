@@ -97,6 +97,21 @@ their flow.
 
 Every security fix must **not break the working product** and must be **rollback-safe** — verify behavior after the fix and ensure a clean revert path if it fails.
 
+## Applying fixes — commit/branch discipline
+
+**One branch, one commit per finding — not a separate branch per fix.** The feature being reviewed needs to be committed first, as the stable "before fixes" base the fix commits sit on top of. Fixes for one bounded feature typically touch the same small set of files, so separate branches would just conflict with each other on merge — and the feature and its fixes are one logical change; main should receive them together, not the feature without its fixes or the fixes without the feature. Separate commits already give most of what separate branches would: each fix is independently readable and revertible (`git revert`), and the PR diff shows a clear list of what changed, without the branch-management overhead.
+
+**Sequence:**
+
+1. Commit the feature as-is (the stable base).
+2. Resolve any findings that are policy questions, not code bugs (see below) first, recording the decision in `docs/decisions.md` — other fixes may depend on that answer.
+3. Fix remaining findings one at a time. Run the test suite after each. Commit message includes the finding number, e.g. `Fix #3: keep data module out of client bundle`.
+4. Restart to a clean state and re-run the scenario-driven Verify pass (see `TESTING.md`) against the acceptance-criteria file.
+5. Update the handover doc (e.g. `docs/HANDOVER.md`).
+6. Open one PR to `main` listing which findings were fixed and which were accepted (deliberately not fixed, with reasoning). Merge only after review.
+
+**Not every finding is a code defect.** Some are ambiguities the review surfaces that Discovery/Design never fully pinned down — e.g. "is this access restriction actually intended, or is that itself the gap?" Those need a decision, recorded in `docs/decisions.md`, not a code fix — and because other findings' fixes can depend on that decision, resolving policy questions comes before writing bug fixes, not after.
+
 ## Defers to
 
 Use `cso` / `security-review` for deep assessment; this SOP defines the baseline checklist, the cadence, and the fix-safety rules.
