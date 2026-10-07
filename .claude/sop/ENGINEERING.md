@@ -23,6 +23,24 @@
 - [ ] **No silent failures** — handle or surface errors; never swallow them.
 - [ ] **No orphaned dead code** — remove imports/vars/functions *your* change made unused; leave pre-existing dead code unless asked.
 
+## Library dependency selection
+
+Before adding a new library, compare it against the alternatives — including "write it ourselves" and "use the platform/stdlib" — on total lifecycle cost, not just lines of code saved today.
+
+- **Problem fit & footprint** — Solves the actual problem cleanly, at the smallest size that does so. Prefer stdlib/platform first; don't pull in a large abstraction for something a few lines would handle — and don't hand-roll complex, security-sensitive functionality just to dodge a dependency.
+- **Maintenance health** — Recent commits/releases, responsive maintainers, a track record of fixing bugs and security issues promptly. Stars/downloads are a signal, not proof of quality — for critical functionality, read the implementation.
+- **Security & supply chain** — Vulnerability history, scanning support, and the size/trustworthiness of its transitive dependency tree. Watch for install scripts, native binaries, or build steps that need extra trust.
+- **API stability & exit cost** — Mature, semver'd, predictable upgrades. Keep third-party types out of our public/internal interfaces so replacing the library later stays cheap.
+- **License compatibility** — Its license and its transitive deps' licenses fit our project's distribution/commercial requirements.
+- **Necessity (YAGNI)** — Every dependency needs a concrete justification; no adding libraries for speculative future needs.
+
+**For non-trivial dependencies, answer before adding:**
+1. Why can't stdlib/platform solve this?
+2. What's its security/vulnerability track record, and what transitive deps does it pull in?
+3. How costly would it be to remove later?
+4. Are its licenses compatible?
+Prefer dependencies that are boring, mature, well-understood, and easy to upgrade or remove.
+
 ## Troubleshooting log — `docs/troubleshooting.md`
 
 Debugging the same problem twice is pure waste, and across sessions it is invisible waste — nobody
