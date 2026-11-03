@@ -44,6 +44,26 @@ Draw it in layers, going only as deep as the project warrants:
 3. **Component** — inside one container (usually the main application): its modules or major building blocks (controllers, services, repositories, adapters), what each is responsible for, and who depends on whom. Show the direction of dependency and the external calls each component makes.
 4. **Code** — inside a single component: its classes, interfaces, functions and types, how they relate (inheritance, composition, calls), and the data shapes that cross its boundary. Draw it only for components that are complex, critical or risky, never for the whole system.
 
+### Notation — use UML on every layer
+
+Draw each layer with the standard Unified Modeling Language (UML) diagram type / notation below. The C4 layers decide *what* to show; UML decides *how* to draw it.
+
+| Layer | UML diagram | Shows | Mermaid support |
+|-------|-------------|-------|-----------------|
+| Context | **Use case** | People as actors, the system as one boundary box, external systems as actors tagged `«system»` | None native — use a `flowchart` with `«actor»` / `«system»` labels |
+| Container | **Deployment** | Nodes and artifacts (`«service»`, `«database»`, `«queue»`), with each communication path labelled by protocol | None native — use a `flowchart` with `subgraph` nodes, stereotype labels, and the cylinder shape for datastores |
+| Component | **Component** | Components (`«component»`), provided and required interfaces, dependency arrows pointing from user to used | None native — use a `flowchart`, or `classDiagram` with `<<component>>` / `<<interface>>` |
+| Code | **Class**, plus **Sequence** for a key flow and **State** for a stateful entity | Types and their relationships; the order of calls; allowed state transitions | Native — `classDiagram`, `sequenceDiagram`, `stateDiagram-v2` |
+
+Where the data model matters, use an **ER diagram** (`erDiagram`) alongside the Code layer — it is not strictly UML, but it is the standard notation for entities and relationships.
+
+Notation rules, for both Mermaid and draw.io:
+
+- **Use UML relationship semantics correctly.** Solid line with open arrow = association or call; dashed arrow = dependency; solid line with hollow triangle = inheritance; dashed line with hollow triangle = implements; filled diamond = composition; hollow diamond = aggregation. Don't use a dependency arrow where you mean inheritance.
+- **Label stereotypes in guillemets** (`«service»`, `«database»`) rather than inventing icons or colours to convey type. Colour is reserved for the new / modified highlighting below.
+- **In the `.drawio` file,** use draw.io's built-in **UML** shape library (Shapes → UML) for actors, components, interfaces, nodes and classes, so shapes carry real UML semantics rather than lookalike rectangles.
+- **UML is a notation, not ceremony.** Use the subset the layer needs; omit compartments, stereotypes or multiplicities that add no information. If strict UML makes a diagram harder to read for its audience, favour readability and note the deviation in the legend.
+
 ### Keeping the layer sheets current in the `.drawio` file
 
 The companion `.drawio` file has one sheet (page) per layer — Context, Container, Component, Code — in addition to the side-by-side overview. Treat the sheets as living documents that move with the code:
