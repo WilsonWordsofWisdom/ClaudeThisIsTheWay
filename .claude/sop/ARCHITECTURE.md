@@ -39,9 +39,31 @@ When the diagram was never produced, derive it from what's there. Read the code 
 
 Draw it in layers, going only as deep as the project warrants:
 
-1. **Context** — the system and the external things it talks to.
-2. **Container** — the services, processes, and data stores inside it.
-3. **Component** — modules within the main application, and who depends on whom.
+1. **Context** — the system as a single box, the people (users, operators) who use it, and the external systems it talks to (third-party APIs, identity providers, payment, email), with a short label on each relationship. No internal detail; a non-technical reader should understand it at a glance.
+2. **Container** — inside the system boundary: each separately running or deployable unit (web app, API, worker, database, queue, cache, file store), its technology, and how containers communicate (protocol, sync vs. async). A "container" is a process or data store, not a Docker container.
+3. **Component** — inside one container (usually the main application): its modules or major building blocks (controllers, services, repositories, adapters), what each is responsible for, and who depends on whom. Show the direction of dependency and the external calls each component makes.
+4. **Code** — inside a single component: its classes, interfaces, functions and types, how they relate (inheritance, composition, calls), and the data shapes that cross its boundary. Draw it only for components that are complex, critical or risky, never for the whole system.
+
+### Keeping the layer sheets current in the `.drawio` file
+
+The companion `.drawio` file has one sheet (page) per layer — Context, Container, Component, Code — in addition to the side-by-side overview. Treat the sheets as living documents that move with the code:
+
+- **Update in the same change that causes the drift.** When a PR adds, removes, renames or re-wires something a layer shows, update that layer's sheet (and the matching Mermaid diagram in `docs/architecture.md`) before merge. Don't batch diagram updates for later.
+- **Know which sheet a change touches:**
+
+  | Change | Sheet(s) to update |
+  |--------|--------------------|
+  | New/removed user type or external system or third-party API | Context (and Container if a new integration point appears) |
+  | New/removed service, worker, datastore, queue, or a changed protocol between them | Container |
+  | New/removed/split/merged module in a container, or a changed dependency direction | Component |
+  | Changed classes, interfaces or data shapes inside a component that has a Code sheet | Code |
+
+  A change at a lower layer usually leaves the layers above untouched; a change at a higher layer almost always requires checking the layers below it.
+- **Only add a Code sheet when warranted.** Create one per complex, critical or risky component, named after it (e.g. `Code – Auth`). Don't create empty or placeholder Code sheets.
+- **Keep sheets consistent with each other.** A box that appears on more than one sheet must have the same name everywhere, and each sheet should reference the one above and below it (e.g. a label such as "see Component sheet") so the hierarchy stays navigable.
+- **Apply the before/after convention per sheet.** Use the same colors (green = new, amber = modified, unchanged = default) and legend on every sheet touched by an approved decision; reset to the new baseline once the change is merged and released.
+- **Edit the existing sheet, don't recreate it.** Preserve the operator's layout, styles and any manual positioning; change only the elements affected. Keep the `.drawio` XML valid (unique cell ids, edges pointing at existing cells) and confirm the file still opens.
+- **Flag mismatches.** If a sheet and the code disagree and the intent is unclear, ask the operator which is right rather than silently "fixing" either, and log any resulting decision in `docs/decisions.md`.
 
 For an architecture review, also mark **trust boundaries** and the **data flows** that cross them.
 

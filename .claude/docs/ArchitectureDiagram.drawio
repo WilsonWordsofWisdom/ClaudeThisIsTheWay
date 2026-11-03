@@ -1,11 +1,55 @@
 <mxfile host="65bd71144e">
     <diagram id="zBTlOMG1O_5E39Ex6NMv" name="Page-1">
-        <mxGraphModel dx="938" dy="390" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="586" dy="509" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="&amp;lt;Blank Architecture Diagram Template&amp;gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;[To be removed]&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="320" y="80" width="200" height="120" as="geometry"/>
+                <mxCell id="2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&amp;lt;Blank Architecture Diagram Template&amp;gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;[To be removed]&lt;/div&gt;" vertex="1">
+                    <mxGeometry height="120" width="200" x="320" y="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram name="Context Layer" id="hf38FOdqaXJVfXWi9D4R">
+        <mxGraphModel dx="586" dy="509" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="EmRGKNFl2m5qPCy5XkAt-0"/>
+                <mxCell id="EmRGKNFl2m5qPCy5XkAt-1" parent="EmRGKNFl2m5qPCy5XkAt-0"/>
+                <mxCell id="EmRGKNFl2m5qPCy5XkAt-2" parent="EmRGKNFl2m5qPCy5XkAt-1" style="rounded=0;whiteSpace=wrap;html=1;" value="&amp;lt;Blank Architecture Diagram Template&amp;gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;[To be removed]&lt;/div&gt;" vertex="1">
+                    <mxGeometry height="120" width="200" x="320" y="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram name="Container Layer" id="ZEr0eWwGMqYLZkoGoXbB">
+        <mxGraphModel dx="586" dy="509" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="MCmR9iLuRxl1Pg-9nmel-0"/>
+                <mxCell id="MCmR9iLuRxl1Pg-9nmel-1" parent="MCmR9iLuRxl1Pg-9nmel-0"/>
+                <mxCell id="MCmR9iLuRxl1Pg-9nmel-2" parent="MCmR9iLuRxl1Pg-9nmel-1" style="rounded=0;whiteSpace=wrap;html=1;" value="&amp;lt;Blank Architecture Diagram Template&amp;gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;[To be removed]&lt;/div&gt;" vertex="1">
+                    <mxGeometry height="120" width="200" x="320" y="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram name="Component Layer" id="pkJjERHajesgwhLAqFhn">
+        <mxGraphModel dx="586" dy="509" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="oU-FgaDVKD0nFC5iTADt-0"/>
+                <mxCell id="oU-FgaDVKD0nFC5iTADt-1" parent="oU-FgaDVKD0nFC5iTADt-0"/>
+                <mxCell id="oU-FgaDVKD0nFC5iTADt-2" parent="oU-FgaDVKD0nFC5iTADt-1" style="rounded=0;whiteSpace=wrap;html=1;" value="&amp;lt;Blank Architecture Diagram Template&amp;gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;[To be removed]&lt;/div&gt;" vertex="1">
+                    <mxGeometry height="120" width="200" x="320" y="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram name="Code Layer" id="VFeSXUTPlotkEFAefM5W">
+        <mxGraphModel dx="586" dy="509" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="97KLCK3ho7KvJugEWFVM-0"/>
+                <mxCell id="97KLCK3ho7KvJugEWFVM-1" parent="97KLCK3ho7KvJugEWFVM-0"/>
+                <mxCell id="97KLCK3ho7KvJugEWFVM-2" parent="97KLCK3ho7KvJugEWFVM-1" style="rounded=0;whiteSpace=wrap;html=1;" value="&amp;lt;Blank Architecture Diagram Template&amp;gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;[To be removed]&lt;/div&gt;" vertex="1">
+                    <mxGeometry height="120" width="200" x="320" y="80" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
